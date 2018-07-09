@@ -1,0 +1,41 @@
+<h4>Update Task</h4>
+<div class="table-responsive">
+<table style="width:500px;" cellpadding="10">
+        <tr>
+          <td class="form-label"><b>Task :</b></td>
+          <td><input type="text" class="form-control" [(ngModel)]="item.TaskDesc"></td>
+        </tr>
+        <tr>
+                <td><b>Priority :</b></td>
+                <td><input type="range" class="form-control" [(ngModel)]="item.Priority" max="30" min="1" step="1"></td>
+              </tr>
+        <tr>
+        <tr>
+          <td><b>Parent Task :</b></td>
+          <!--<td><input type="text"  class="form-control" [(ngModel)]="item.ParentTaskID" >-->
+            <td><select  class="form-control" [(ngModel)]="item.ParentTaskID">
+                    <option *ngFor="let ob of ParentTaskList" [value]='ob.ParentTaskID'>{{ob.ParentTaskDesc}}</option>
+                  </select></td>
+        </tr>        
+        <tr>
+          <td><b>Start Date :</b></td>
+          <!--<td><input type="date" class="form-control" [(ngModel)]="item.StartDate | date:'yyyy-MM-dd'" (ngModelChange)="StartDate = $event" name="StartDate"></td>-->
+          <td><input type="date" class="form-control" id="StartDate" [ngModel]="item.StartDate | date:'y-MM-dd'" (ngModelChange)="item.StartDate = $event"></td>
+        </tr>
+        <tr>
+          <td><b>End Date :</b></td>
+          <td><input type="date" class="form-control" id="EndDate" [ngModel]="item.EndDate | date:'y-MM-dd'" (ngModelChange)="item.EndDate = $event"></td>
+          
+        </tr>
+        <tr>
+        
+          <td colspan="2" align="center">
+              <button class="btn btn-primary" (click)='Update()'>Update</button>&nbsp;
+              <button class="btn btn-primary" (click)='Cancel()'>Cancel</button>
+            </td>
+        </tr>
+      </table>
+      <div>
+      {{msg}}
+    </div>
+    </div>
